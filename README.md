@@ -1,6 +1,6 @@
 # Redis Web Terminal
 
-A web-based terminal client for [my implementation of Redis](https://github.com/zorridge/redis-web-terminal).
+A web terminal client for [my implementation of Redis](https://github.com/zorridge/redis-web-terminal).
 
 ```mermaid
 flowchart LR
