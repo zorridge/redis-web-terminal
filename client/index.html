@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A web-based terminal for Redis using redis-cli and xterm.js">
+  <title>Redis Web Terminal</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+  <style>
+    body {
+      background: #222;
+      color: #eee;
+    }
+
+    #terminal {
+      width: 100vw;
+      height: 90vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="terminal"></div>
+  <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+  <script>
+    const term = new Terminal();
+    term.open(document.getElementById('terminal'));
+    term.focus();
+
+    const ws = new WebSocket('ws://' + location.hostname + ':8080');
+    ws.onmessage = (event) => term.write(event.data);
+    term.onData(data => ws.send(data));
+    ws.onclose = () => term.write('\r\n*** Disconnected ***\r\n');
+  </script>
+</body>
+
+</html>
