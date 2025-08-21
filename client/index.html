@@ -95,7 +95,8 @@
 
     term.focus();
 
-    const ws = new WebSocket('ws://' + location.hostname + ':8080');
+    const wsProtocol = location.protocol === 'https:' ? 'wss://' : 'ws://';
+    const ws = new WebSocket(wsProtocol + location.host + '/');
     ws.onmessage = (event) => term.write(event.data);
     term.onData(data => ws.send(data));
     ws.onclose = () => term.write('\r\n*** Disconnected. Refresh to reconnect. ***\r\n');
