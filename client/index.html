@@ -135,22 +135,25 @@
     term.open(document.getElementById('terminal'));
     fitAddon.fit();
 
-    term.writeln([
-      ' ┌ \x1b[1m\u2728 Features\x1b[0m ─────────────────────────────────────────────────────────────────────────────┐',
-      ' │                                                                                         │',
-      ' │  \x1b[31;1mStrings                                \x1b[32mLists\x1b[0m                                           │',
-      ' │   GET, SET                               LPUSH, RPUSH, LPOP                             │',
-      ' │                                          LLEN, LRANGE, BLPOP                            │',
-      ' │                                                                                         │',
-      ' │  \x1b[33;1mStreams                                \x1b[34mPub/Sub\x1b[0m                                         │',
-      ' │   XADD, XRANGE, XREAD                    SUBSCRIBE, UNSUBSCRIBE, PUBLISH                │',
-      ' │                                                                                         │',
-      ' │  \x1b[35;1mTransactions                           \x1b[37;3mBuilt using...\x1b[0m                                  │',
-      ' │   MULTI, EXEC, DISCARD                   a single-threaded, event-driven architecture   │',
-      ' │                                          with I/O multiplexing (kqueue/epoll)           │',
-      ' │                                                                                         │',
-      ' └─────────────────────────────────────────────────────────────────────────────────────────┘',
-    ].join('\n\r'));
+    const container = document.getElementById('terminal');
+    if (container.offsetWidth >= 900) {
+      term.writeln([
+        ' ┌ \x1b[1m\u2728 Features\x1b[0m ────────────────────────────────────────────────────────────────────────────┐',
+        ' │                                                                                        │',
+        ' │  \x1b[31;1mStrings                               \x1b[32mLists\x1b[0m                                           │',
+        ' │   GET, SET                              LPUSH, RPUSH, LPOP                             │',
+        ' │                                         LLEN, LRANGE, BLPOP                            │',
+        ' │                                                                                        │',
+        ' │  \x1b[33;1mStreams                               \x1b[34mPub/Sub\x1b[0m                                         │',
+        ' │   XADD, XRANGE, XREAD                   SUBSCRIBE, UNSUBSCRIBE, PUBLISH                │',
+        ' │                                                                                        │',
+        ' │  \x1b[35;1mTransactions                          \x1b[37;3mBuilt using...\x1b[0m                                  │',
+        ' │   MULTI, EXEC, DISCARD                  a single-threaded, event-driven architecture   │',
+        ' │                                         with I/O multiplexing (kqueue/epoll)           │',
+        ' │                                                                                        │',
+        ' └────────────────────────────────────────────────────────────────────────────────────────┘',
+      ].join('\n\r'));
+    }
 
     term.focus();
 
