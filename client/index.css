@@ -152,7 +152,7 @@ body {
     height: 90vh;
   }
 
-  .tooltip-icon {
+  .tooltip-wrapper {
     display: none;
   }
 }
