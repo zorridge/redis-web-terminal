@@ -98,7 +98,7 @@
     const ws = new WebSocket('ws://' + location.hostname + ':8080');
     ws.onmessage = (event) => term.write(event.data);
     term.onData(data => ws.send(data));
-    ws.onclose = () => term.write('\r\n*** Disconnected ***\r\n');
+    ws.onclose = () => term.write('\r\n*** Disconnected. Refresh to reconnect. ***\r\n');
   </script>
 </body>
 

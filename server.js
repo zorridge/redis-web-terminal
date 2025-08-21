@@ -25,6 +25,13 @@ wss.on('connection', ws => {
     ws.send(data);
   });
 
+  shell.on('exit', (code, signal) => {
+    console.log(`redis-cli exited with code ${code}, signal ${signal}`);
+    if (ws.readyState === ws.OPEN) {
+      ws.close();
+    }
+  });
+
   ws.on('message', msg => {
     shell.write(msg);
   });
