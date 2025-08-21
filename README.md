@@ -1,5 +1,7 @@
 # Redis Web Terminal
 
+[![Web Terminal](https://img.shields.io/badge/Web%20Terminal-redis.ziheng.dev-ff4438?style=for-the-badge)](https://redis.ziheng.dev/)
+
 A web terminal client for [my implementation of Redis](https://github.com/zorridge/redis).
 
 ```mermaid
